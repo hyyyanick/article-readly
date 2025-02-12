@@ -13,6 +13,8 @@
       @for (item of articleItems; track item.id) {
         <app-article-item [articleItem]="item"></app-article-item>
       }
+    } @else {
+      <h3 class="ion-text-center">There is no articles available.</h3>
     }
   </ion-list>
 </ion-content>

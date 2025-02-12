@@ -11,6 +11,10 @@ export class ArticleService {
   private readonly http = inject(HttpClient);
   
   getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(`${this.baseUrl}/posts`)
+    return this.http.get<Article[]>(`${this.baseUrl}/posts`);
+  }
+
+  getArticle(articleId: string): Observable<Article> {
+    return this.http.get<Article>(`${this.baseUrl}/posts/${articleId}`);
   }
 }

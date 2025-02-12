@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./articles/articles.page').then( m => m.ArticlesPage)
   },
   {
+    path: 'articles/:articleId',
+    loadComponent: () => import('./articles/article-detail/article-detail.page').then( m => m.ArticleDetailPage)
+  },
+  {
     path: '',
     redirectTo: 'articles',
     pathMatch: 'full',
