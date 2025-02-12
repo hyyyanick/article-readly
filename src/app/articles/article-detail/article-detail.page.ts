@@ -1,6 +1,6 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { rxResource } from "@angular/core/rxjs-interop";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import { ArticleService } from 'src/app/services/article.service';
 
@@ -18,8 +18,16 @@ export class ArticleDetailPage {
     request: () => ({ articleId: this.activatedRoute.snapshot.params['articleId'] }),
     loader: ({ request }) => this.articleService.getArticle(request.articleId)
   });
+  private readonly router = inject(Router);
 
   article = computed(() => this.articleResource.value());
+  error = this.articleResource.error;
+
+  constructor() {
+    effect(() => {
+      if (this.error()) this.router.navigate(['/articles']);
+    })
+  }
 }
 
 
