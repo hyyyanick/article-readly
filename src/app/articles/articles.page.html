@@ -2,6 +2,9 @@
   <ion-toolbar color="primary">
     <ion-title>My articles</ion-title>
   </ion-toolbar>
+  <ion-toolbar color="primary">
+    <app-search-bar (onSearchQueryChange)="searchArticles($event)"></app-search-bar>
+  </ion-toolbar>
 </ion-header>
 @let articleItems = articles();
 @let loading = isLoading();
@@ -14,11 +17,11 @@
         <app-article-item [articleItem]="item"></app-article-item>
       }
     } @else {
-      <h3 class="ion-text-center">There is no articles available.</h3>
+      <h3 class="ion-text-center">Aucun article disponible.</h3>
     }
   </ion-list>
 
-  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" [disabled]="noMoreArticles()">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
