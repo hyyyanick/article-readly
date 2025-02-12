@@ -10,8 +10,8 @@ export class ArticleService {
   private readonly baseUrl: string = "https://jsonplaceholder.typicode.com";
   private readonly http = inject(HttpClient);
   
-  getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(`${this.baseUrl}/posts`);
+  getArticles(startArticleNum: number, limit: number): Observable<Article[]> {
+    return this.http.get<Article[]>(`${this.baseUrl}/posts?_start=${startArticleNum}&_limit=${limit}`);
   }
 
   getArticle(articleId: string): Observable<Article> {

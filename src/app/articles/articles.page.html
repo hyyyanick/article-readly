@@ -17,4 +17,8 @@
       <h3 class="ion-text-center">There is no articles available.</h3>
     }
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
