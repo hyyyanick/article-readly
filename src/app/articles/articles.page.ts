@@ -1,16 +1,15 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonList, IonLoading } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonLoading } from '@ionic/angular/standalone';
 import { ArticleService } from '../services/article.service';
 import { Article } from '../models/article.model';
+import { ArticleItemComponent } from './article-item/article-item.component';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.page.html',
   styleUrls: ['./articles.page.scss'],
   standalone: true,
-  imports: [IonLoading, IonList, IonLabel, IonItem, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonLoading, IonList, IonContent, IonHeader, IonTitle, IonToolbar, ArticleItemComponent]
 })
 export class ArticlesPage implements OnInit {
   private readonly articleService = inject(ArticleService);
