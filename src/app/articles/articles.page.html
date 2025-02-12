@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My articles</ion-title>
+  </ion-toolbar>
+</ion-header>
+@let articleItems = articles();
+@let loading = isLoading();
+<ion-content>
+  <ion-list>
+    @if (loading) {
+      <ion-loading isOpen="loading" message="Loading..." spinner="circles"></ion-loading>
+    } @else if (articleItems.length) {
+      @for (item of articleItems; track item.id) {
+        <ion-item [detail]="true">
+          <ion-label class="ion-text-nowrap">
+            <h1>{{ item.title }}</h1>
+            <p>{{ item.body }}</p>
+          </ion-label>
+        </ion-item>
+      }
+    }
+  </ion-list>
+</ion-content>
