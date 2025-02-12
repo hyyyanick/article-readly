@@ -1,0 +1,7 @@
+{
+  "name": "article-readly",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
